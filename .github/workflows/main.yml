@@ -19,7 +19,7 @@ jobs:
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
         server: ftp.itsourov.com
-        username: u440599207.laravel
+        username: u440599207.github
         password: ${{ secrets.ftp_password }}
 
     - name: Deploy to production
