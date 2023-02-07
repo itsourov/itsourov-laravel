@@ -5,7 +5,9 @@ namespace Database\Seeders;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,10 +18,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(5)->create();
+
+        Storage::deleteDirectory('public');
+        Storage::deleteDirectory('user');
+        Storage::deleteDirectory('thumbnail');
+        Storage::deleteDirectory('profile-image');
+        \App\Models\User::factory(20)->create();
 
         \App\Models\Post::factory(20)->create();
-        \App\Models\Comment::factory(100)->create();
+        \App\Models\Comment::factory(1000)->create();
         \App\Models\Category::factory(8)->create();
 
         foreach (Category::all() as $category) {
@@ -30,7 +37,12 @@ class DatabaseSeeder extends Seeder
 
             $post->addMediaFromUrl(fake()->imageUrl(1280, 720))
                 ->withResponsiveImages()
-                ->toMediaCollection('thumbnails');
+                ->toMediaCollection('thumbnails', 'thumbnail');
+        }
+        foreach (User::all() as $user) {
+            $user->addMediaFromUrl(fake()->imageUrl())
+
+                ->toMediaCollection('profileImages', 'profile-image');
         }
     }
 }

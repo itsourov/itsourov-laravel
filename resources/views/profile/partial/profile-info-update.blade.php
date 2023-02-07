@@ -16,8 +16,11 @@
 
     <div>
 
-        <a class="spotlight inline-block" href="{{ auth()->user()->profileImage('full') }}">
-            <img class="rounded shadow h-36 w-36 my-4" src="{{ auth()->user()->profileImage() }}" alt="">
+        <a class="spotlight inline-block"
+            href="{{ auth()->user()->getMedia('profileImages')->last()? auth()->user()->getMedia('profileImages')->last()->getUrl(): asset('images/user.png') }}">
+            <img class="rounded shadow h-36 w-36 my-4"
+                src="{{ auth()->user()->getMedia('profileImages')->last()? auth()->user()->getMedia('profileImages')->last()->getUrl('preview'): asset('images/user.png') }}"
+                alt="">
         </a>
     </div>
 

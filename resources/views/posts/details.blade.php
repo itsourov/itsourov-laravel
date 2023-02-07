@@ -14,7 +14,7 @@
                         class="text-gray-900 dark:text-gray-100 mx-auto w-full max-w-full format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
                         <header class="flex gap-3 not-format items-center mb-2">
                             <img class="w-6 h-6 rounded-full "
-                                src="{{ $post->user->profileImage() ?? '/images/user.png' }}" />
+                                src="{{ $post->user->getFirstMediaUrl('profileImages') ?? '/images/user.png' }}" />
                             <a href="#"
                                 class="text-base  text-gray-500 dark:text-gray-400">{{ $post->user->name }}</a>
                             <div>.</div>

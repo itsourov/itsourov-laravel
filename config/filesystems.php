@@ -43,6 +43,20 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'thumbnail' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/thumbnail'),
+            'url' => env('APP_URL') . '/storage/thumbnail',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+        'profile-image' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/profile-image'),
+            'url' => env('APP_URL') . '/storage/profile-image',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
         'user' => [
             'driver' => 'local',
             'root' => storage_path('app/user'),

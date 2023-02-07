@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -17,7 +18,7 @@ class PostController extends Controller
     public function index()
 
     {
-        $posts = Post::with('media')->Filter(request(['categories', 'search']))->latest()->withCount('comments')->paginate(10);
+        $posts = Post::Filter(request(['categories', 'search']))->latest()->withCount('comments')->with('media')->paginate(10);
         return view('posts.index', ['posts' => $posts]);
     }
 
@@ -30,8 +31,11 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+
+        $loadedPost =  ($post->loadMissing(['user.media', 'categories', 'comments.user.media',]));
+        // return $loadedPost;
         return view('posts.details', [
-            'post' => $post->loadMissing(['categories', 'comments']),
+            'post' => $loadedPost,
 
 
 
