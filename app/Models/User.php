@@ -59,10 +59,13 @@ class User extends Authenticatable implements MustVerifyEmail, HasMedia
             ->nonQueued();
     }
 
-    public function profileImage($size = null)
+    public function pp($size = null)
     {
 
-        $media = $this->getMedia('profileImages')->last();
-        return  $media ?  $media->getAvailableUrl([$size ? $size : 'preview']) : '/images/user.png';
+
+
+        return $this->getMedia('profileImages')
+            ->last()
+            ->getAvailableUrl($size ? $size : 'preview') ?? asset('/images/user.png');
     }
 }

@@ -5,7 +5,7 @@
         <div class="flex items-center">
             <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white"><img
                     class="mr-2 w-6 h-6 rounded-full border-primary-500 border-2"
-                    src="{{ $comment->user->profileImage() ?? '/images/user.png' }}"
+                    src="{{ $comment->user->getFirstMediaUrl('profileImages', 'preview') ?? '/images/user.png' }}"
                     alt="{{ $comment->user->name }}">{{ $comment->user->name }}</p>
             <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
                     title="February 8th, 2022">{{ $comment->created_at->format('M. d, y') }}</time></p>

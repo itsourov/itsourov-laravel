@@ -55,7 +55,7 @@ class PostController extends Controller
 
             $post->addMedia(storage_path('app/public/temp/thumbnail/' . $request->thumbnail . '/' . $temporaryFile->filename))
                 ->withResponsiveImages()
-                ->toMediaCollection('thumbnails');
+                ->toMediaCollection('thumbnails', 'thumbnail');
             Storage::deleteDirectory('public/temp/thumbnail/' .  $request->thumbnail);
             $temporaryFile->delete();
         }
@@ -115,7 +115,7 @@ class PostController extends Controller
 
             $post->addMedia(storage_path('app/public/temp/thumbnail/' . $request->thumbnail . '/' . $temporaryFile->filename))
                 ->withResponsiveImages()
-                ->toMediaCollection('thumbnails');
+                ->toMediaCollection('thumbnails', 'thumbnail');
             Storage::deleteDirectory('public/temp/thumbnail/' .  $request->thumbnail);
             $temporaryFile->delete();
         }

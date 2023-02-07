@@ -74,6 +74,6 @@ class Post extends Model implements HasMedia
     // Relationship To Comments
     public function comments()
     {
-        return $this->hasMany(Comment::class, 'post_id')->whereNull('parent_id')->with(['user', 'replies'])->withTrashed();
+        return $this->hasMany(Comment::class, 'post_id')->whereNull('parent_id')->with(['replies.user.media'])->withTrashed();
     }
 }
