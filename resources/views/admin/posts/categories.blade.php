@@ -153,5 +153,8 @@
                 .replace(/[^\w-]+/g, '');
             document.getElementById("cat_slug").value = b;
         });
+        window.onbeforeunload = function() {
+            return "Your work will be lost.";
+        };
     </script>
 </x-admin-layout>
