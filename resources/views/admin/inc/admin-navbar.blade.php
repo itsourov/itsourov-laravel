@@ -365,7 +365,7 @@
                                 class="flex  text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600">
                                 <span class="sr-only">Open user menu</span>
                                 <img class="w-8 h-8 rounded-full border  border-primary-400"
-                                    src="{{ auth()->user()? auth()->user()->profileImage(): '/images/user.png' }}"
+                                    src="{{ auth()->user()->getMedia('profileImages')->last()? auth()->user()->getMedia('profileImages')->last()->getUrl('preview'): asset('images/user.png') }}"
                                     alt="">
                             </button>
 
