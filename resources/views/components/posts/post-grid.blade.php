@@ -6,10 +6,7 @@
             <a href="{{ route('posts.details', $post->slug) }}">
                 <div class=" aspect-w-16 aspect-h-9 ">
 
-                    {{-- <img src="{{ $post->getFirstMedia('thumbnails')->getUrl('thumbnail') }}"
-                        class="h-full w-full object-cover object-center "> --}}
-
-                    {{ $post->getFirstMedia('thumbnails') }}
+                    {{ $post->getMedia('thumbnails')->last() }}
                 </div>
 
             </a>

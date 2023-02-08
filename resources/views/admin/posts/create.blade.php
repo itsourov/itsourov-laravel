@@ -7,8 +7,8 @@
 
     <script type="module">
         tinymce.init({
-            content_css: "https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css",
-            importcss_append: true,
+           
+            
             relative_urls: false,
             remove_script_host: false,
             selector: '#textarea',
