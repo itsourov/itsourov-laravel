@@ -2,11 +2,15 @@
 
 namespace App\Http\Livewire\Page;
 
-use App\Models\ContactFormData;
 use Livewire\Component;
+use App\Models\ContactFormData;
+use DanHarrin\LivewireRateLimiting\Exceptions\TooManyRequestsException;
+use DanHarrin\LivewireRateLimiting\WithRateLimiting;
+use Illuminate\Validation\ValidationException;
 
 class ContactForm extends Component
 {
+    use WithRateLimiting;
 
     public $name;
     public $email;
@@ -27,6 +31,14 @@ class ContactForm extends Component
 
     public function submitForm()
     {
+        try {
+            $this->rateLimit(2);
+        } catch (TooManyRequestsException $exception) {
+            throw ValidationException::withMessages([
+                'email' => "Slow down! Please wait another {$exception->secondsUntilAvailable} seconds.",
+            ]);
+        }
+
         $this->validate();
         ContactFormData::create([
             'name' => $this->name,
