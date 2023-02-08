@@ -1,6 +1,6 @@
 <x-app pageTitle="Search Results">
 
-    <div class="container mt-10  mx-auto gap-5 px-2  ">
+    <div class="container my-10  mx-auto gap-5 px-2  ">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 ">
             <div class=" md:col-span-2">
 

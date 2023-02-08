@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserFileController;
@@ -16,9 +17,10 @@ use App\Http\Controllers\UserFileController;
 |
 */
 
-// Route::get('/', function () {
-//     return redirect(route('posts'));
-// })->name('home');
+Route::get('/', function () {
+    $posts = Post::latest()->withCount('comments')->with('media')->get()->take(6);
+    return view('welcome', ['posts' => $posts]);
+})->name('home');
 
 
 

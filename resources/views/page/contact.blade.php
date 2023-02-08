@@ -3,7 +3,7 @@
 
 
         <div
-            class="container mt-10 py-5 mx-auto gap-5 px-2 md:px-6  bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md dark:bg-gray-800 dark:border-gray-700">
+            class="container my-10 py-5 mx-auto gap-5 px-2 md:px-6  bg-white border border-gray-200 rounded-lg overflow-hidden shadow-md dark:bg-gray-800 dark:border-gray-700">
             <h2 class="text-center font-bold text-2xl underline">{{ __('Contact') }}</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-5 ">

@@ -6,11 +6,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CategoryController;
 
 
-Route::get('/posts', function () {
-    return redirect(route('home'));
-})->name('posts');
 
-Route::get('/', [PostController::class, 'index'])->name('home');
+Route::get('/blog', [PostController::class, 'index'])->name('posts');
 Route::get('/posts/{post:slug}', [PostController::class, 'show'])->name('posts.details');
 
 Route::get('/category/{category:slug}', [CategoryController::class, 'show'])->name('categories.details');
