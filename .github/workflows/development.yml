@@ -18,7 +18,7 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.3
       with:
-        server: ftp.itsourov.com
+        server: 195.179.238.26
         username: u440599207.laravel
         password: ${{ secrets.ftp_password }}
 
