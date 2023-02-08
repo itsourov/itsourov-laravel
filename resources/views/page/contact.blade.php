@@ -37,34 +37,8 @@
 
                 </div>
 
-                <div class="">
-                    <form action="" method="post" class="space-y-5">
-                        <div>
-                            <x-input-label :value="__('Name')" />
-                            <x-text-input name="name" type="text" class="mt-1 block w-full" :value="old('name', auth()->user() ? auth()->user()->name : '')"
-                                required autocomplete="name" />
-                            <x-input-error class="mt-2" :messages="$errors->get('name')" />
-                        </div>
+                <livewire:page.contact-form />
 
-                        <div>
-                            <x-input-label :value="__('Email')" />
-                            <x-text-input name="email" type="email" class="mt-1 block w-full" :value="old('name', auth()->user() ? auth()->user()->email : '')"
-                                required autocomplete="email" />
-                            <x-input-error class="mt-2" :messages="$errors->get('email')" />
-                        </div>
-                        <div>
-                            <x-input-label :value="__('Message')" />
-                            <x-text-area name="message" rows="4" type="text" class="mt-1 block w-full" required
-                                autofocus>
-                                {{ old('message') }}
-                            </x-text-area>
-
-                            <x-input-error class="mt-2" :messages="$errors->get('message')" />
-                        </div>
-
-                        <x-primary-button>{{ __('Send message') }}</x-primary-button>
-                    </form>
-                </div>
             </div>
 
         </div>
