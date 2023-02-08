@@ -167,7 +167,7 @@
     <section class="bg-gray-200 dark:bg-gray-800 px-2">
         <div class="container mx-auto ">
             <div class="py-14">
-                <h2 class="text-2xl  font-medium dark:text-white ">Previous projects</h2>
+                <h2 class="text-2xl  font-medium dark:text-white ">Blog posts</h2>
 
 
 
