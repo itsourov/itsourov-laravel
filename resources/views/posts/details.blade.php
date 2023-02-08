@@ -7,7 +7,7 @@
 
                 {{-- resources/views/categories/show.blade.php --}}
                 {{ Breadcrumbs::render('post', $post) }}
-                @if (auth()->user()->role == 'admin')
+                @if (auth()->user() && auth()->user()->role == 'admin')
                     <div class="flex  justify-end my-5">
 
 
