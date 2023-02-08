@@ -55,7 +55,7 @@
                                     <div class="relative  w-10 h-10 mr-3 rounded" style="min-width: 32px">
                                         {{-- <img class="object-cover w-full h-full rounded" src="{{ $post->image->image_url }}"
                                         alt="" loading="lazy" /> --}}
-                                        {{ $post->getFirstMedia('thumbnails') }}
+                                        {{ $post->getMedia('thumbnails')->last() }}
                                         <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
                                         </div>
                                     </div>

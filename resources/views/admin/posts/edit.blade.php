@@ -167,8 +167,8 @@
 
                     <div class="w-full">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Preview</label>
-                        <img class="h-auto w-full rounded-lg" src="{{ $post->getFirstMediaUrl('thumbnails') }}"
-                            alt="image description">
+                        <img class="h-auto w-full rounded-lg"
+                            src="{{ $post->getMedia('thumbnails')->last()->getUrl() }}" alt="image description">
 
                     </div>
                     <div class="w-full mt-auto">
