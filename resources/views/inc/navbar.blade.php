@@ -100,6 +100,9 @@
                 <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                     {{ __('Home') }}
                 </x-nav-link>
+                <x-nav-link :href="route('posts')" :active="request()->routeIs('posts')">
+                    {{ __('Blog') }}
+                </x-nav-link>
                 <x-nav-link :href="route('page.contact')" :active="request()->routeIs('page.contact')">
                     {{ __('Contact') }}
                 </x-nav-link>

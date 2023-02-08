@@ -1,3 +1,4 @@
+@props(['shouldPaginate' => true, 'classes', 'posts'])
 <div class="{{ $classes }}">
 
     @foreach ($posts as $post)
@@ -44,6 +45,8 @@
         </div>
     @endforeach
 </div>
-<div class="my-5">
-    {{ $posts->appends(Request::all())->onEachSide(1)->links('pagination.tailwind') }}
-</div>
+@if ($shouldPaginate)
+    <div class="my-5">
+        {{ $posts->appends(Request::all())->onEachSide(1)->links('pagination.tailwind') }}
+    </div>
+@endif
