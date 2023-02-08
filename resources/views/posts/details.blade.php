@@ -7,6 +7,29 @@
 
                 {{-- resources/views/categories/show.blade.php --}}
                 {{ Breadcrumbs::render('post', $post) }}
+                @if (auth()->user()->role == 'admin')
+                    <div class="flex  justify-end my-5">
+
+
+                        @if ($post->trashed())
+                            (Deleted)
+                        @else
+                            <a href="{{ route('admin.posts.edit', $post) }}"
+                                class="inline mx-1 px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                Edit
+                            </a>
+
+                            <form action="{{ route('admin.posts.delete', $post) }}" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <button type="submit"
+                                    class=" inline mx-1 px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
+                                    Delete
+                                </button>
+                            </form>
+                        @endif
+                    </div>
+                @endif
                 <div
                     class="p-3 lg:p-5 mb-5 bg-white border border-gray-200 rounded-lg shadow-sm dark:bg-gray-800 dark:border-gray-700 text-gray-900 dark:text-gray-100">
 
