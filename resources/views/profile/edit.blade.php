@@ -9,7 +9,7 @@
 
         @include('profile.partial.password-change')
     </div>
-    <div class="px-2 container mx-auto ">
+    <div class="px-2 mb-10 container mx-auto ">
         @include('profile.partial.delete-user')
     </div>
 

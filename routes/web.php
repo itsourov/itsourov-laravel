@@ -40,3 +40,4 @@ require __DIR__ . '/inc/web/admin.php';
 require __DIR__ . '/inc/web/upload.php';
 require __DIR__ . '/inc/web/post.php';
 require __DIR__ . '/inc/web/page.php';
+require __DIR__ . '/inc/web/shop.php';

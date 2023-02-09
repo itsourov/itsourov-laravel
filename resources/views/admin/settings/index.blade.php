@@ -19,6 +19,9 @@
                         <x-admin.setting-tab-item target="logoSettings"
                             active="{{ request()->get('tab') == 'logoSettings' }}">{{ __('Logo') }}
                         </x-admin.setting-tab-item>
+                        <x-admin.setting-tab-item target="ownerInfoSettings"
+                            active="{{ request()->get('tab') == 'ownerInfoSettings' }}">{{ __('Owner Info Settings') }}
+                        </x-admin.setting-tab-item>
 
 
 
@@ -33,6 +36,7 @@
 
                     @include('admin.settings.general')
                     @include('admin.settings.logo')
+                    @include('admin.settings.ownerInfo')
 
 
                 </div>
