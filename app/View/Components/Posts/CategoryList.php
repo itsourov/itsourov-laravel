@@ -24,8 +24,8 @@ class CategoryList extends Component
      */
     public function render()
     {
-        $categories = cache()->remember('categories', 60, function () {
-            return Category::withCount('posts')->get();
+        $categories = cache()->remember('post_categories', 60, function () {
+            return Category::where('type', 'postCategory')->withCount('posts')->get();
         });
         return view('components.posts.category-list', [
             'categories' => $categories,
