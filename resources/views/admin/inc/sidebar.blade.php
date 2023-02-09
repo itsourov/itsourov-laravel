@@ -82,6 +82,30 @@
                     </x-admin.sidebar-menu-item>
 
 
+                    <x-admin.sidebar-menu-item :active="request()->routeIs('admin.products*')" :dropdown="true">
+
+                        <x-slot name="icon">
+                            <x-carbon-product />
+                        </x-slot>
+                        <x-slot name="title">
+                            {{ __('Products') }}
+                        </x-slot>
+
+                        <x-slot name="submenu">
+                            <x-admin.sidebar-sub-menu-item :href="route('admin.products')" :active="request()->routeIs('admin.products')">
+                                {{ __('View all products') }}
+                            </x-admin.sidebar-sub-menu-item>
+                            <x-admin.sidebar-sub-menu-item :href="route('admin.products.create')" :active="request()->routeIs('admin.products.create')">
+                                {{ __('Add new posts') }}
+                            </x-admin.sidebar-sub-menu-item>
+                            <x-admin.sidebar-sub-menu-item :href="route('admin.products.categories')" :active="request()->routeIs('admin.products.categories')">
+                                {{ __('Categories') }}
+                            </x-admin.sidebar-sub-menu-item>
+                        </x-slot>
+
+                    </x-admin.sidebar-menu-item>
+
+
                     <li>
                         <button type="button"
                             class="flex items-center w-full p-2 text-base text-gray-900 transition duration-75 rounded-lg group hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-700"

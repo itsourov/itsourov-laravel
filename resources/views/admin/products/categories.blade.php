@@ -5,12 +5,12 @@
                 <div
                     class=" p-3 lg:p-5 mb-5 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 text-gray-900 dark:text-gray-100">
 
-                    <h3 class="text-lg font-bold ">Add new Category</h3>
+                    <h3 class="text-lg font-bold ">Add new product category</h3>
 
                     <form action="{{ route('admin.posts.categories') }}" method="post" class="mt-2 space-y-6">
                         @csrf
 
-                        <input type="hidden" name="type" value="postCategory">
+                        <input type="hidden" name="type" value="productCategory">
                         @error('type')
                             <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
                         @enderror

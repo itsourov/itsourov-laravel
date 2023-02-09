@@ -4,8 +4,9 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Post;
-use App\Models\Category;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,10 +27,20 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(20)->create();
 
         \App\Models\Post::factory(20)->create();
-        \App\Models\Comment::factory(1000)->create();
+        \App\Models\Comment::factory(100)->create();
         \App\Models\Category::factory(8)->create();
 
-        foreach (Category::all() as $category) {
+
+        Product::factory(20)->create();
+
+        foreach (User::all() as $user) {
+            $user->addMediaFromUrl(fake()->imageUrl())
+
+                ->toMediaCollection('profileImages', 'profile-image');
+        }
+
+
+        foreach (Category::where('type', 'postCategory')->get() as $category) {
             $posts = Post::inRandomOrder()->take(rand(4, 8))->pluck('id');
             $category->posts()->attach($posts);
         }
@@ -39,10 +50,16 @@ class DatabaseSeeder extends Seeder
                 ->withResponsiveImages()
                 ->toMediaCollection('thumbnails', 'thumbnail');
         }
-        foreach (User::all() as $user) {
-            $user->addMediaFromUrl(fake()->imageUrl())
 
-                ->toMediaCollection('profileImages', 'profile-image');
+        foreach (Category::where('type', 'productCategory')->get() as $category) {
+            $products = Product::inRandomOrder()->take(rand(4, 8))->pluck('id');
+            $category->products()->attach($products);
+        }
+        foreach (Product::all() as $product) {
+
+            $product->addMediaFromUrl(fake()->imageUrl(1280, 720))
+                ->withResponsiveImages()
+                ->toMediaCollection('productImages', 'productImages');
         }
     }
 }

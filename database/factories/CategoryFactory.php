@@ -19,7 +19,7 @@ class CategoryFactory extends Factory
         return [
             'title' => fake()->text(20),
             'slug' => fake()->unique()->slug(),
-            'type' => 'postCategory',
+            'type' => rand(0, 1) ? 'postCategory' : 'productCategory',
         ];
     }
 }

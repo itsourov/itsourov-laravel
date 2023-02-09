@@ -238,17 +238,5 @@
 </script>
 
 
-    <script>
-        const titleInput = document.getElementById("post_title")
-        titleInput.addEventListener('input', function(evt) {
 
-            var b = this.value.toLowerCase().replace(/ /g, '-')
-                .replace(/[^\w-]+/g, '');
-            document.getElementById("post_slug").value = b;
-        });
-
-        window.onbeforeunload = function() {
-            return "Your work will be lost.";
-        };
-    </script>
 </x-admin-layout>

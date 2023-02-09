@@ -50,6 +50,13 @@ return [
             'visibility' => 'public',
             'throw' => false,
         ],
+        'productImages' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/productImages'),
+            'url' => env('APP_URL') . '/storage/productImages',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
         'profile-image' => [
             'driver' => 'local',
             'root' => storage_path('app/public/profile-image'),

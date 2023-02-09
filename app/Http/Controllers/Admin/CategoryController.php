@@ -9,10 +9,15 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
-    public function index()
+    public function PostCategoryIndex()
     {
-        $categories =  Category::withCount('posts')->latest()->paginate(10);
+        $categories =  Category::where('type', 'postCategory')->withCount('posts')->latest()->paginate(10);
         return view('admin.posts.categories', ['categories' => $categories]);
+    }
+    public function productCategoryIndex()
+    {
+        $categories =  Category::where('type', 'productCategory')->withCount('posts')->latest()->paginate(10);
+        return view('admin.products.categories', ['categories' => $categories]);
     }
 
 
@@ -32,6 +37,6 @@ class CategoryController extends Controller
         ]);
 
         Category::create($formFields);
-        return redirect(route('admin.posts.categories'))->with('message', 'Category submitted');
+        return back()->with('message', 'Category submitted');
     }
 }

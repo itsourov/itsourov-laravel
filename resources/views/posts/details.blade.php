@@ -48,10 +48,13 @@
                             {{ $post->title }}</h2>
                         <figure>
 
-                            <a class="spotlight inline-block"
-                                href="{{ $post->getMedia('thumbnails')->last()->getUrl() }}">
-                                {{ $post->getMedia('thumbnails')->last() }}
-                            </a>
+                            @if ($post->getMedia('thumbnails')->last())
+                                <a class="spotlight inline-block"
+                                    href="{{ $post->getMedia('thumbnails')->last()->getUrl() }}">
+                                    {{ $post->getMedia('thumbnails')->last() }}
+                                </a>
+                            @endif
+
 
                         </figure>
 
