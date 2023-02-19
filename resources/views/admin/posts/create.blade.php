@@ -1,84 +1,7 @@
 <x-admin-layout>
 
 
-    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
-        crossorigin="anonymous"></script>
-
-
-    <script type="module">
-        tinymce.init({
-           
-            
-            relative_urls: false,
-            remove_script_host: false,
-            selector: '#textarea',
-            plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
-            skin: "oxide-dark",
-            content_css: "dark",
-            toolbar: "styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist | gallery",
-            file_picker_types: 'image',
-           
-            /* and here's our custom image picker*/
-            images_upload_url: '{{ route('posts.image.upload') . '?_token=' . csrf_token() }}',
-            images_upload_base_path: '{{ route('home') }}',
-    
-            setup: function(editor) {
-                editor.ui.registry.addButton('gallery', {
-                    text: 'My Gallery',
-                    icon: 'gallery',
-                    onAction: function(_) {
-                        $('#image').val('');
-                        tinyMCE.activeEditor.windowManager.open({
-                            title: 'Previous Gallery', // The dialog's title - displayed in the dialog header
-                            size: 'large',
-                            
-                            body: {
-                                type: 'panel', // The root body type - a Panel or TabPanel
-                                items: [ // A list of panel components
-                                    {
-                                        type: 'htmlpanel',
-                                        html: `<livewire:post.image-gallery />`
-
-                                    }
-                                ]
-                            },
-                            buttons: [{
-                                    type: 'cancel',
-                                    name: 'closeButton',
-                                    text: 'Cancel'
-                                },
-                                {
-                                    type: 'submit',
-                                    name: 'submitButton',
-                                    text: 'Insert To Editor',
-                                    primary: true
-                                }
-                            ],
-                            onSubmit: function(api) {
-                                var data = api.getData();
-                                let source = $('#image').val();
-
-                                if (source != '') {
-                                    editor.focus();
-                                    editor.selection.setContent('<img style="width: 100%;"  src="' + source +
-                                        '" />');
-                                    api.close();
-                                } else {
-                                    alert("Please select an image.");
-                                }
-                            }
-                        });
-                    }
-                });
-            },
-        });
-        $(document).on('click', '.gallery-div > img', function() {
-            $('.gallery-div > img').removeClass('active');
-            $(this).addClass('active');
-           
-            $('#image').val($(this).attr('src'));
-        });
-    </script>
+   
     <style>
         .active {
             outline: none !important;
@@ -186,7 +109,7 @@
 
 
 
-                        <input type="text" name="content" id="textarea" value="{{ old('content') }}" />
+                        <input type="text" name="content" class="tinymceEditor" value="{{ old('content') }}" />
 
                     </div>
                 </div>

@@ -37,7 +37,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        // dd(Category::whereIn('id', request('categories'))->get()->toArray());
+    // dd(request('content'));
         $formFields = $request->validate([
             'title' => ['required'],
             'slug' => ['required', Rule::unique('posts', 'slug')],

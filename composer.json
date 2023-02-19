@@ -21,7 +21,8 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.11",
         "spatie/laravel-medialibrary": "^10.0.0",
-        "spatie/laravel-settings": "^2.7"
+        "spatie/laravel-settings": "^2.7",
+        "unisharp/laravel-filemanager": "^2.5"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",

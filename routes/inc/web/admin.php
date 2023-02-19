@@ -1,12 +1,14 @@
 <?php
 
+use UniSharp\LaravelFilemanager\Lfm;
+
+
+
 use Illuminate\Support\Facades\Route;
-
-
-
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\Post\PostController;
+use App\Http\Controllers\Admin\Post\PostImageUploader;
 use App\Http\Controllers\Admin\Settings\SiteSettingsController;
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
@@ -24,6 +26,10 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/{post}', [PostController::class, 'edit'])->name('admin.posts.edit');
         Route::put('/{post}', [PostController::class, 'update'])->name('admin.posts.update');
         Route::delete('/{post}', [PostController::class, 'destroy'])->name('admin.posts.delete');
+
+    
+            Route::post('/posts/images/upload', [PostImageUploader::class, 'store'])->name('admin.posts.images.store');
+      
     });
 
 
@@ -42,4 +48,8 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::get('/categories', [CategoryController::class, 'productCategoryIndex'])->name('admin.products.categories');
         Route::post('/categories', [CategoryController::class, 'store']);
     });
+});
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth', 'admin']], function () {
+    Lfm::routes();
 });

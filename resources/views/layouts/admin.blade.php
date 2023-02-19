@@ -53,6 +53,8 @@
     <script src="{{ asset('assets/js/tinymce/tinymce.min.js') }}"></script>
     @livewireScripts
     @include('inc.message')
+
+    @yield('scripts')
 </body>
 
 </html>

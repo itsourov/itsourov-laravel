@@ -44,6 +44,7 @@
 
     @include('inc.footer')
     @livewireScripts
+    @yield('scripts')
 </body>
 
 </html>
