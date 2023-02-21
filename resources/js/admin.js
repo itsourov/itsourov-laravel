@@ -1,21 +1,6 @@
 import './sidebar';
 
-function resizeImage(src, maxWidth, quality) {
-    return new Promise<ResizeImageResult>(res => {
-      Jimp.read(src, async function (err, image) {
-        if (image.bitmap.width > maxWidth) {
-          image.resize(maxWidth, Jimp.AUTO);
-        }
-        image.quality(quality);
-  
-        const previewImage = image.clone();
-        previewImage.quality(25).blur(8);
-        const preview = await previewImage.getBase64Async(previewImage.getMIME());
-  
-        res({ STATUS: "success", image, preview });
-      });
-    });
-  }
+
 
 var editor_config = {
     path_absolute: "/",
@@ -30,7 +15,8 @@ var editor_config = {
             if (e.command === 'mceUpdateImage') {
                 const img = editor.selection.getNode();
                 img.setAttribute('data-src', img.src);
-                img.removeAttribute('src')
+               
+        
             }
         });
     },
@@ -61,7 +47,7 @@ var editor_config = {
 
                 callback(message.content);
 
-                console.log(resizeImage(message.content,300,20))
+                console.log(message)
 
 
 
